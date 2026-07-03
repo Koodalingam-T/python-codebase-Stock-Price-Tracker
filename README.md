@@ -13,7 +13,7 @@ A modern, real-time desktop dashboard application built with Python to track Nat
 1. **Clone or Download the Project Repository:**
    ```bash
    git clone https://github.com
-   cd marketpulse-tracker
+   cd python-codebase-Stock-Price-Tracker
    ```
 
 2. **Install Required Packages:**
