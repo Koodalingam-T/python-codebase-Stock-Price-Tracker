@@ -127,10 +127,25 @@ class ModernStockApp(ctk.CTk):
         self.refresh_job = self.after(self.refresh_interval, self.fetch_stock_data_loop)
 
     def on_closing(self):
+        """Safely shuts down CustomTkinter internal timers and closes the app."""
+        # 1. Turn off our custom background stock update loop
         if self.refresh_job:
             self.after_cancel(self.refresh_job)
+            self.refresh_job = None
+        
+        # 2. Close open matplotlib chart windows to free up memory
         plt.close('all') 
+        
+        # 3. Hide the window from the screen immediately so the app feels fast
+        self.withdraw()
+        
+        # 4. CRITICAL FIX: Tell the app to clear out any leftover CustomTkinter 
+        # background animation or scaling tasks before completely destroying itself.
+        self.update_idletasks()
+        
+        # 5. Cleanly close the app engine once everything is idle
         self.destroy()
+
 
 if __name__ == "__main__":
     app = ModernStockApp()
