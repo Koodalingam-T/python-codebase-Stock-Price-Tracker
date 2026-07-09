@@ -1,4 +1,4 @@
-# 📊 MarketPulse Tracker & Charting App
+# 📊 Stock Price Tracker & Charting App
 
 A modern, real-time desktop dashboard application built with Python to track National Stock Exchange (NSE) asset prices and intra-day trends effortlessly. This application avoids security scraping blocks by communicating directly with the Yahoo Finance engine.
 
